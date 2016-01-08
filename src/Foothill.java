@@ -39,7 +39,8 @@ public class Foothill
       System.out.println("Target time: " + target);
       
       // code supplied by student
-
+      kBest = 0;
+      
       choices.get(kBest).showSublist();
    }
 }
