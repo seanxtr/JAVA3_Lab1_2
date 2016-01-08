@@ -11,8 +11,7 @@ public class Foothill
       int target = 3600;
       ArrayList<iTunesEntry> dataSet = new ArrayList<iTunesEntry>();
       ArrayList<Sublist> choices = new ArrayList<Sublist>();
-      int k, j, numSets, max, kBest, arraySize, masterSum;
-      boolean foundPerfect;
+      int k, j, kBest = 0, arraySize;
       
       // for formatting and timing
       NumberFormat tidy = NumberFormat.getInstance(Locale.US);
@@ -39,8 +38,48 @@ public class Foothill
       System.out.println("Target time: " + target);
       
       // code supplied by student
-      kBest = 0;
+     startTime = System.nanoTime();
+      iTunesEntry curEntry;
       
+      choices.add(new Sublist(dataSet));
+
+      // outter loop to go thru all possible numbers
+      outerloop:
+      for(k = 0; k < dataSet.size(); k++){
+         curEntry = dataSet.get(k);
+         arraySize = choices.size();
+            
+         // inner loop to go thru all existing choices
+         for(j = 0; j < arraySize ; j++){
+               
+               // check if new sum within the target
+               if (choices.get(j).getSum() + curEntry.getTime() <= target)
+                  choices.add(choices.get(j).addItem(k));
+               
+               // check if new sum meet the target
+               if (choices.get(j).getSum() + curEntry.getTime() == target)
+                  break outerloop;
+         }
+      }
+         
+      // find the index of choice of largest sum
+      int tempSum = Integer.MIN_VALUE;
+      int curSum;
+      for(k = 0; k < choices.size(); k++){
+         curSum = choices.get(k).getSum();
+         if (curSum > tempSum){
+            tempSum = curSum;
+            kBest = k;
+         }
+      }
+     stopTime = System.nanoTime();
+     
+     // ouput results
       choices.get(kBest).showSublist();
+      
+     // report algorithm time
+     System.out.println("\nAlgorithm Elapsed Time: "
+        + tidy.format( (stopTime - startTime) / 1e9)
+        + " seconds.");
    }
 }
