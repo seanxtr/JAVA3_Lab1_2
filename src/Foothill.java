@@ -56,7 +56,7 @@ public class Foothill
             
          // inner loop to go thru all existing choices
          for(j = 0; j < arraySize ; j++){
-        	 
+
                // check if new sum within the target
                if (choices.get(j).getSum() + curEntry.getTime() <= target)
                   choices.add(choices.get(j).addItem(k));

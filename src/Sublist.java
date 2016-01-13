@@ -35,11 +35,11 @@ class Sublist implements Cloneable
    public Object clone() throws CloneNotSupportedException
    {
       // shallow copy
-	   Sublist newObject = (Sublist)super.clone();
-	   
+      Sublist newObject = (Sublist)super.clone();
+
       // deep copy
       newObject.indices = (ArrayList<Integer>)indices.clone();
-      
+
       return newObject;
    }
    
@@ -69,11 +69,10 @@ class Sublist implements Cloneable
       
       for(int i = 0; i < indices.size(); i++){
          System.out.printf(" array[%d] = %s | %s | %s%n", 
-               indices.get(i), 
-               originalObjects.get(indices.get(i)).getTitle(),
-               originalObjects.get(indices.get(i)).getArtist(),
-               originalObjects.get(indices.get(i)).getTime());
+            indices.get(i), 
+            originalObjects.get(indices.get(i)).getTitle(),
+            originalObjects.get(indices.get(i)).getArtist(),
+            originalObjects.get(indices.get(i)).getTime());
       }
-      
    }
 };
