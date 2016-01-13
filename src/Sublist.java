@@ -34,8 +34,11 @@ class Sublist implements Cloneable
    @SuppressWarnings("unchecked")
    public Object clone() throws CloneNotSupportedException
    {
+	  Sublist newObject = (Sublist)super.clone();
+	  
       // shallow copy
-      Sublist newObject = (Sublist)super.clone();
+	  newObject.originalObjects = this.originalObjects;
+	  
       // deep copy
       newObject.indices = (ArrayList<Integer>)indices.clone();
       
