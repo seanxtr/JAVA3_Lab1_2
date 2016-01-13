@@ -13,7 +13,7 @@ public class Foothill
 {
    public static void main(String[] args) throws Exception
    {
-      int target = 2500;
+      int target = 3600;
       ArrayList<iTunesEntry> dataSet = new ArrayList<iTunesEntry>();
       ArrayList<Sublist> choices = new ArrayList<Sublist>();
       int k, j, kBest = 0, arraySize;
